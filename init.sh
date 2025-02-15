@@ -25,6 +25,8 @@ sed -i '/redis/d' ./Procfile
 sed -i '/watch/d' ./Procfile
 
 bench get-app lms
+bench get-app builder --branch develop
+bench get-app insights --branch version-3
 
 bench new-site lms.localhost \
 --force \
@@ -33,6 +35,8 @@ bench new-site lms.localhost \
 --no-mariadb-socket
 
 bench --site lms.localhost install-app lms
+bench --site lms.localhost install-app builder
+bench --site lms.localhost install-app insights
 bench --site lms.localhost set-config developer_mode 1
 bench --site lms.localhost clear-cache
 bench use lms.localhost
