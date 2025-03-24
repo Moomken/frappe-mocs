@@ -13,12 +13,12 @@ services:
     volumes:
       - mariadb-data:/var/lib/mysql
     networks:
-      - erpnext-network
+      - lms-network
 
   redis:
     image: redis:alpine
     networks:
-      - erpnext-network
+      - lms-network
 
   frappe:
     image: frappe/bench:latest
@@ -36,8 +36,12 @@ services:
       - 8000:8000
       - 9000:9000
     networks:
-      - erpnext-network
+      - lms-network
 
 volumes:
   mariadb-data:
   frappe:
+
+networks:
+  lms-network:
+    driver: bridge
