@@ -12,9 +12,13 @@ services:
       MYSQL_ROOT_PASSWORD: Moomkenwe0909
     volumes:
       - mariadb-data:/var/lib/mysql
+    networks:
+      - erpnext-network
 
   redis:
     image: redis:alpine
+    networks:
+      - erpnext-network
 
   frappe:
     image: frappe/bench:latest
@@ -24,13 +28,16 @@ services:
     working_dir: /home/frappe
     volumes:
       - .:/workspace
-      - .frappe-bench:/home/frappe/frappe-bench
+      - .frappe:/home/frappe/
     #   - ./sites:/home/frappe/frappe-bench/sites
     #   - ./apps:/home/frappe/frappe-bench/apps
     #   - ./logs:/home/frappe/frappe-bench/logs
     ports:
       - 8000:8000
       - 9000:9000
+    networks:
+      - erpnext-network
 
 volumes:
   mariadb-data:
+  frappe:
