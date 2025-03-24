@@ -1,0 +1,9 @@
+Add these lines to your site_config.json file
+
+{
+ "host_name": "mocs.ly",
+ "webserver_port": "",
+ "socketio_port": 443,
+ "socketio_path": "/socket.io",
+ "socketio_url": "https://mocs.ly"
+}
